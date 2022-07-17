@@ -13,6 +13,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@atom/*": ["./components/atoms/*"],
+      "@atom": ["./components/atoms/index.ts"],
+      "@molecule": ["./components/molecules/index.ts"],
+      "@molecule/*": ["./components/molecules/*"],
+      "@organism/*": ["./components/organisms/*"],
+      "@organism": ["./components/organisms/index.ts"],
+      "@public/*": ["./public/*"],
+      "@store/*": ["./store/slice/*"],
+      "@typing": ["./typings/index.ts"]
+    },
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
