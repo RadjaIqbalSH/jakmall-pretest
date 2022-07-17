@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 
       <ButtonBack />
       {/* <ButtonBack text="Back to delivery" /> */}
-      <div className="w-full h-fit flex space-x-30 mt-22">
+      <div className="w-full h-fit flex flex-col md:flex-row space-y-30 md:space-x-30 mt-22">
         <div className="flex-grow">
           {/* STEP 1 */}
           <DeliveryStep />
@@ -33,10 +33,10 @@ const Home: NextPage = () => {
           {/* STEP 2 */}
 
           {/* STEP 3 */}
-          <FinishStep />
+          {/* <FinishStep /> */}
           {/* STEP 3 */}
         </div>
-        <div className="flex-none w-fit">
+        <div className="flex-none w-full md:w-fit">
           <Summary />
         </div>
       </div>

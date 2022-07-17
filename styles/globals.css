@@ -42,6 +42,6 @@
     src: url('/fonts/material-icons/Material-Icons.ttf');
   }
   body {
-    @apply bg-yellow-100 px-50 pt-55 pb-95;
+    @apply bg-yellow-100 sm:px-50 pt-55 sm:pb-95;
   }
 }

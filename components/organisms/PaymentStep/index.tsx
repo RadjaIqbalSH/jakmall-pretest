@@ -8,7 +8,6 @@ export const PaymentStep = () => {
     data: { deliveryDetails },
   } = useSelector(selectPayment);
 
-  console.log('hallos');
   return (
     <ScPaymentStepContainer>
       <Shipment />

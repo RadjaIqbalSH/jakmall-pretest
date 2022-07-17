@@ -51,7 +51,7 @@ export const PaymentSlice = createSlice({
   // },
 });
 
-export const { setProductData } = PaymentSlice.actions;
+export const { setProductData, setDeliveryDetails } = PaymentSlice.actions;
 
 export const selectPayment = (state: AppState) => state.payment;
 

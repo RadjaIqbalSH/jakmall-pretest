@@ -44,7 +44,6 @@ export const InputTextArea: FC<IInputTextAreaProps> = ({ label, ...restProps }) 
             onChange={(e) => setValue(e.target.value)}
             rows={2}
             maxLength={120}
-            {...restProps}
           ></ScTextAreaField>
         </ScTextAreaBox>
         {isFocused && (
