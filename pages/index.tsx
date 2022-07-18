@@ -3,23 +3,11 @@ import { Card } from '@atom';
 import { ButtonBack } from '@molecule';
 import { Steps, Summary, DeliveryStep, PaymentStep, FinishStep } from '@organism';
 import { useSelector, useDispatch } from 'react-redux';
-import { wrapper } from '../store';
-import { selectPayment, setDecrementStep, resetStep, fetchPayment } from '@store/payment';
-import { useEffect } from 'react';
-
-export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
-  await store.dispatch(fetchPayment());
-  return {
-    props: {},
-  };
-});
+import { selectPayment, setDecrementStep, resetStep } from '@store/payment';
 
 const Home: NextPage = () => {
-  const { data, step } = useSelector(selectPayment);
+  const { step } = useSelector(selectPayment);
   const dispatch = useDispatch();
-  useEffect(() => {
-    window.localStorage.setItem('temporary-state', JSON.stringify(data));
-  });
   return (
     <Card>
       <Steps stepsList={['Delivery', 'Peyment', 'Finish']} activeStep={step} />

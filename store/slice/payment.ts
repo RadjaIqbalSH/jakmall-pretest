@@ -69,6 +69,9 @@ export const PaymentSlice = createSlice({
     resetState: (state: any) => {
       Object.assign(state, initialState());
     },
+    refreshState: (state: any, action: any) => {
+      Object.assign(state, action.payload);
+    },
   },
 
   // extraReducers: {
@@ -86,12 +89,9 @@ export const {
   setPayment,
   setDropshipperFee,
   resetState,
+  refreshState,
 } = PaymentSlice.actions;
 
 export const selectPayment = (state: AppState) => state.payment;
-
-export const fetchPayment = (): AppThunk => async (dispatch) => {
-  // const data = await window.localStorage.setItem('temporary-state', JSON.stringify(data));.
-};
 
 export default PaymentSlice.reducer;
