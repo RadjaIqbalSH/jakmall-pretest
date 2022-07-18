@@ -108,12 +108,14 @@ module.exports = {
       300: '300px',
       400: '400px',
       460: '460px',
+      550: '550px',
       fit: 'fit-content',
     },
     minHeight: {
       70: '70px',
       120: '120px',
       460: '460px',
+      550: '550px',
     },
     zIndex: {
       '-10': '-10',

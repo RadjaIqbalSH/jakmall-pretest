@@ -3,23 +3,26 @@ import { Title } from '@atom/Title';
 import { Option } from '@molecule/Option';
 import { ScShipmentContainer, ScShipment } from './styled';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { selectPayment, setShipment } from '@store/payment';
+
 const example = [
   {
-    id: 1,
+    id: 'GS',
     title: 'GO-SEND',
     number: '15,000',
     deliveryEstimate: 'today',
     value: 15000,
   },
   {
-    id: 2,
+    id: 'JNE',
     title: 'JNE',
     number: '9,000',
     deliveryEstimate: '2 days',
     value: 9000,
   },
   {
-    id: 3,
+    id: 'PC',
     title: 'Personal Courier',
     number: '29,000',
     deliveryEstimate: '1 day',
@@ -28,25 +31,34 @@ const example = [
 ];
 
 export const Shipment = () => {
-  const [state, setState] = useState<number>(example[0].value);
+  const {
+    data: { shipment },
+  } = useSelector(selectPayment);
+  const dispatch = useDispatch();
 
-  const handleShipment = (payload: number) => {
-    setState(payload);
-    console.log('handleShipment');
+  const handleShipment = (payload: any) => {
+    dispatch(
+      setShipment({
+        shipmentDescription: payload.title,
+        shipmentFee: payload.value,
+        shipmentId: payload.id,
+        deleveryEsimate: payload.deliveryEstimate,
+      }),
+    );
   };
 
   return (
     <ScShipmentContainer>
       <Title text="Shipment" size="large" />
       <ScShipment>
-        {example.map(({ id, title, number, value }) => {
+        {example.map((e) => {
           return (
             <Option
-              key={id}
-              active={value === state}
-              title={title}
-              number={number}
-              onClick={() => handleShipment(value)}
+              key={e.id}
+              active={shipment.shipmentId === e.id}
+              title={e.title}
+              number={e.number}
+              onClick={() => handleShipment(e)}
             />
           );
         })}

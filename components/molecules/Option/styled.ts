@@ -19,7 +19,7 @@ interface IScOptionLabel {
 }
 
 export const ScOption = styled.button<IScOption>(({ active }) => [
-  tw`w-full xl:w-180 h-60 px-15 flex items-center transition-all duration-500`,
+  tw`w-full xl:w-180 h-60 px-15 flex items-center transition-all duration-300`,
   active ? tw`border-2 border-green-500 bg-green-500 bg-opacity-20` : tw`border-2 border-black-200`,
 ]);
 export const ScOptionDescription = tw.div`w-full flex flex-col justify-start`;

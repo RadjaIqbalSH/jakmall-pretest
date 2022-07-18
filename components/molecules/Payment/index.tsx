@@ -3,45 +3,56 @@ import { Title } from '@atom/Title';
 import { Option } from '@molecule/Option';
 import { ScPaymentContainer, ScPayment } from './styled';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { selectPayment, setPayment } from '@store/payment';
+
 const example = [
   {
-    id: 1,
+    id: 'EW',
     title: 'e-Wallet',
     number: '1,500,000 left',
     value: 'e-Wallet',
   },
   {
-    id: 2,
+    id: 'TF',
     title: 'Transfer',
     value: 'Bank transfer',
   },
   {
-    id: 3,
+    id: 'VA',
     title: 'Virtual Account',
-    value: 'Virtual ACcount Transfer',
+    value: 'Virtual Account Transfer',
   },
 ];
 
 export const Payment = () => {
-  const [state, setState] = useState<string>(example[0].value);
+  const {
+    data: { payment },
+  } = useSelector(selectPayment);
+  const dispatch = useDispatch();
 
-  const handleShipment = (payload: string) => {
-    setState(payload);
-    console.log('handleShipment');
+  const handlePayment = (payload: any) => {
+    dispatch(
+      setPayment({
+        paymentDescription: payload.value,
+        payment: payload.title,
+        id: payload.id,
+      }),
+    );
   };
 
   return (
     <ScPaymentContainer>
       <Title text="Payment" size="large" />
       <ScPayment>
-        {example.map(({ id, title, number, value }) => {
+        {example.map((data) => {
           return (
             <Option
-              key={id}
-              active={value === state}
-              title={title}
-              number={number}
-              onClick={() => handleShipment(value)}
+              key={data.id}
+              active={data.id === payment.id}
+              title={data.title}
+              number={data.number}
+              onClick={() => handlePayment(data)}
             />
           );
         })}

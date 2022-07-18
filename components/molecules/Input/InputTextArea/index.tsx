@@ -17,7 +17,7 @@ interface IInputTextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement
 export const InputTextArea: FC<IInputTextAreaProps> = ({ label, ...restProps }) => {
   const [value, setValue] = useState<string>('');
   const [isFocused, setIsFocused] = useState<boolean>(false);
-  const [isValid, setIsValid] = useState<boolean>(true);
+  const [isValid, setIsValid] = useState<boolean>(false);
   const textArea = useRef<HTMLTextAreaElement>(null);
   const [focus, setFocus] = useState<boolean>(false);
   const handleFocus = () => {
